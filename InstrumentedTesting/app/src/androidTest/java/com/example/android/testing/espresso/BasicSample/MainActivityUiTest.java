@@ -36,4 +36,14 @@ public class MainActivityUiTest {
         onView(withId(R.id.textToBeChanged))
                 .check(matches(withText("Hello")));
     }
+
+    @Test
+    public void testOpenActivityChangeTextButton() {
+        onView(withId(R.id.editTextUserInput))
+                .perform(typeText("World"), closeSoftKeyboard());
+        onView(withId(R.id.activityChangeTextBtn))
+                .perform(click());
+        onView(withId(R.id.show_text_view))
+                .check(matches(withText("World")));
+    }
 }
