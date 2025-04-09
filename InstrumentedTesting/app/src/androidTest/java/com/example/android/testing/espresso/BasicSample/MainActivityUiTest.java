@@ -54,4 +54,12 @@ public class MainActivityUiTest {
         onView(withId(R.id.textToBeChanged))
                 .check(matches(withText("")));
     }
+
+    @Test
+    public void testEmptyInputOpenActivityTextButton() {
+        onView(withId(R.id.activityChangeTextBtn))
+                .perform(click());
+        onView(withId(R.id.show_text_view))
+                .check(matches(withText("")));
+    }
 }
