@@ -21,5 +21,19 @@ public class MainActivityUiTest {
     public ActivityScenarioRule<MainActivity> activityScenarioRule =
             new ActivityScenarioRule<>(MainActivity.class);
 
-    // Tests will go here
+    @Test
+    public void testInitialText() {
+        onView(withId(R.id.textToBeChanged))
+                .check(matches(withText("Hello Espresso!")));
+    }
+
+    @Test
+    public void testChangeTextButton() {
+        onView(withId(R.id.editTextUserInput))
+                .perform(typeText("Hello"), closeSoftKeyboard());
+        onView(withId(R.id.changeTextBt))
+                .perform(click());
+        onView(withId(R.id.textToBeChanged))
+                .check(matches(withText("Hello")));
+    }
 }
